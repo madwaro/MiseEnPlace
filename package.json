@@ -8,6 +8,7 @@
     "name": "Mise En Place",
     "manifest": "src/manifest.json",
     "main": "miseenplace.sketchplugin",
+    "repository": "https://github.com/madwaro/MiseEnPlace.git",
     "assets": [
       "assets/**/*"
     ]

@@ -4,7 +4,6 @@
   "description": "Prep first, cook later",
   "version": "1.0",
   "homepage": "https://github.com/madwaro/MiseEnPlace",
-  "repository": "https://github.com/madwaro/MiseEnPlace.git",
   "compatibleVersion": 3,
   "bundleVersion": 1,
   "icon": "icon.png",

@@ -1,0 +1,23 @@
+{
+  "author": "Carlos Madrigal",
+  "authorEmail": "madwaro@live.com",
+  "description": "Prep first, cook later",
+  "version": "1.0",
+  "compatibleVersion": 3,
+  "bundleVersion": 1,
+  "icon": "icon.png",
+  "commands": [
+    {
+      "name": "Prep layers in page",
+      "identifier": "miseenplace.prep-layers-in-page",
+      "shortcut": "ctrl alt cmd p",
+      "script": "./commands.js"
+    }
+  ],
+  "menu": {
+    "title": "Mise En Place",
+    "items": [
+      "miseenplace.prep-layers-in-page"
+    ]
+  }
+}

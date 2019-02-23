@@ -12,13 +12,20 @@
       "name": "Prep layers in page",
       "identifier": "miseenplace.prep-layers-in-page",
       "shortcut": "ctrl alt cmd p",
-      "script": "./commands.js"
+      "script": "./sort.js"
+    },
+    {
+      "name": "Prep for Principle",
+      "identifier": "miseenplace.prep-for-motion",
+      "shortcut": "ctrl alt cmd o",
+      "script": "./motion.js"
     }
   ],
   "menu": {
     "title": "Mise En Place",
     "items": [
-      "miseenplace.prep-layers-in-page"
+      "miseenplace.prep-layers-in-page",
+      "miseenplace.prep-for-motion"
     ]
   }
 }

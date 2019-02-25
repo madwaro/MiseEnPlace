@@ -43,10 +43,22 @@ function processGroup(group) {
       processSymbolInstance(layer)
     } else {
       rename(layer)
+      processHidden(layer)
     }
   }
 
   rename(group)
+  processHidden(group)
+}
+
+function processHidden(layer) {
+  if (!layer.hidden) {
+    return
+  }
+
+  layer.hidden = false
+  layer.style.opacity = 0
+  layer.name = `👁  ${layer.name}`
 }
 
 function processSymbolInstance(instance) {

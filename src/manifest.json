@@ -11,13 +11,13 @@
     {
       "name": "Prep layers in page",
       "identifier": "miseenplace.prep-layers-in-page",
-      "shortcut": "ctrl alt cmd p",
+      "shortcut": "ctrl alt cmd l",
       "script": "./sort.js"
     },
     {
       "name": "Prep for Principle",
       "identifier": "miseenplace.prep-for-motion",
-      "shortcut": "ctrl alt cmd o",
+      "shortcut": "ctrl alt cmd p",
       "script": "./motion.js"
     }
   ],

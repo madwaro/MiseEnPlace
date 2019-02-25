@@ -26,6 +26,8 @@ export default function() {
   })
 
 	utils.toast('Done')
+
+  utils.debugLog(`Names: ${JSON.stringify(uniqueNames)}`)
 }
 
 function processGroup(group) {
@@ -79,15 +81,29 @@ function getUniqueName(name) {
   var newName = name
 
   if (uniqueNames[newName]) {
+    utils.verboseLog(`Not unique: ${newName}`)
+
     var newName = name
-    var re = / (\d+)$/
+    var re = /(.+) (\d+)$/
     var results = re.exec(name)
     if (results) {
-      var currentCopy = parseInt(results[1])
-      newName = `${name} ${currentCopy + 1}`
+      var currentCopy = parseInt(results[2])
+
+      const oldName = newName
+
+      newName = newName.replace(re, '$1')
+      newName = `${newName} ${currentCopy + 1}`
+
+      utils.verboseLog(`    Has number: ${oldName} (${currentCopy}) --> ${newName}`)
     } else {
       newName = `${name} 2`
+
+      utils.verboseLog(`    First duplicate, bump it to 2: ${newName}`)
     }
+
+    newName = getUniqueName(newName)
+  } else {
+    utils.verboseLog(`Unique already: ${newName}`)
   }
 
   uniqueNames[newName] = newName

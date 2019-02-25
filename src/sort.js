@@ -1,4 +1,5 @@
 import sketch from 'sketch'
+import { utils } from './utils.js'
 
 export default function () {
 	const document = sketch.getSelectedDocument()
@@ -17,11 +18,11 @@ export default function () {
 		rearrange(page)
 	}
 
-	toast('Done')
+	utils.toast('Done')
 }
 
 function rearrange(page) {
-	log(`Rearranging ${page.layers.length} items`)
+	utils.log(`Rearranging ${page.layers.length} items`)
 
 	// Create a copy of the array so we can work on it in Javascript
 	var layers = []
@@ -65,7 +66,7 @@ function rearrange(page) {
 			result = 1
 		}
 
-		log(`a[${a.name}]=(${aX}, ${aY}); b[${b.name}]=(${bX}, ${bY}); deltaX: ${deltaX}; deltaY: ${deltaY}; result=${result}`)
+		utils.log(`a[${a.name}]=(${aX}, ${aY}); b[${b.name}]=(${bX}, ${bY}); deltaX: ${deltaX}; deltaY: ${deltaY}; result=${result}`)
 
 		return result
 	})
@@ -78,17 +79,6 @@ function rearrange(page) {
 
 		layer.moveToFront()
 
-		log(`${layer.name} (${layer.frame.x}, ${layer.frame.y})`)
+		utils.log(`${layer.name} (${layer.frame.x}, ${layer.frame.y})`)
 	}
-}
-
-function log(text) {
-	// Uncomment the following line to enable logs.
-	// Open Console and filter entries using "Mise en place"
-
-	// console.log(`Mise en place: ${text}`)
-}
-
-function toast(text) {
-	sketch.UI.message(`Mise en place: ${text}`)
 }

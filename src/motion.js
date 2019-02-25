@@ -1,4 +1,5 @@
 import sketch from 'sketch'
+import { utils } from './utils.js'
 
 var uniqueNames = {}
 
@@ -19,12 +20,12 @@ export default function() {
 
   layers.forEach((layer) => {
     if (layer instanceof sketch.Artboard) {
-      log(`Processing artboard ${layer.name}`)
+      utils.log(`Processing artboard ${layer.name}`)
       processGroup(layer)
     }
   })
 
-	toast('Done')
+	utils.toast('Done')
 }
 
 function processGroup(group) {
@@ -49,7 +50,7 @@ function processGroup(group) {
 function processSymbolInstance(instance) {
   // When detaching, the resulting group gets "Copy" appended to the name.
   const realName = instance.name
-  log(`Detaching ${realName}`)
+  utils.log(`Detaching ${realName}`)
 
   var group = instance.detach({
     recursively: true
@@ -92,20 +93,4 @@ function getUniqueName(name) {
   uniqueNames[newName] = newName
 
   return newName
-}
-
-
-
-
-
-// Abstract this duplicated coordinates
-function log(text) {
-	// Uncomment the following line to enable logs.
-	// Open Console and filter entries using "Mise en place"
-
-	// console.log(`Mise en place: ${text}`)
-}
-
-function toast(text) {
-	sketch.UI.message(`Mise en place: ${text}`)
 }

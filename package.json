@@ -1,6 +1,10 @@
 {
   "name": "miseenplace",
   "version": "0.2.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:madwaro/MiseEnPlace.git"
+  },
   "engines": {
     "sketch": ">=3.0"
   },
@@ -8,7 +12,6 @@
     "name": "Mise En Place",
     "manifest": "src/manifest.json",
     "main": "miseenplace.sketchplugin",
-    "repository": "git@github.com:madwaro/MiseEnPlace.git",
     "assets": [
       "assets/**/*"
     ]

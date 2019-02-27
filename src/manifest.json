@@ -2,7 +2,7 @@
   "author": "Carlos Madrigal",
   "authorEmail": "madwaro@live.com",
   "description": "Prep first, cook later",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "homepage": "https://github.com/madwaro/MiseEnPlace",
   "compatibleVersion": 3,
   "bundleVersion": 1,
@@ -12,7 +12,15 @@
       "name": "Sort artboards",
       "identifier": "miseenplace.sort-artboards",
       "shortcut": "ctrl alt cmd s",
-      "script": "./sort.js"
+      "script": "./sort.js",
+      "handler": "sortArtboards"
+    },
+    {
+      "name": "Sort and rename artboards",
+      "identifier": "miseenplace.sort-rename-artboards",
+      "shortcut": "ctrl alt cmd r",
+      "script": "./sort.js",
+      "handler": "sortRenameArtboards"
     },
     {
       "name": "Prepare page motion in Principle",
@@ -24,6 +32,7 @@
     "title": "Mise En Place",
     "items": [
       "miseenplace.sort-artboards",
+      "miseenplace.sort-rename-artboards",
       "miseenplace.prep-for-motion"
     ]
   }

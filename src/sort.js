@@ -1,8 +1,8 @@
 import sketch from 'sketch'
 import { utils } from './utils.js'
 
-export default function () {
-	const document = sketch.getSelectedDocument()
+export function sortArtboards(context) {
+	const document = sketch.fromNative(context.document)
 	if (!document) {
 		// During developing, every time I save the script executes with a null
 		// document.
@@ -11,24 +11,49 @@ export default function () {
 	}
 
 	const page = document.selectedPage
-	const layers = page.layers
-	const layerCount = layers.length
-
 	if (page.layers.length > 0) {
-		rearrange(page)
+		rearrangeArtboardsInPage(page)
 	}
 
-	utils.toast('Done')
+	utils.toast('Artboards are in place!')
 }
 
-function rearrange(page) {
-	utils.log(`Rearranging ${page.layers.length} items`)
+export function sortRenameArtboards(context) {
+	const document = sketch.fromNative(context.document)
+	if (!document) {
+		// During developing, every time I save the script executes with a null
+		// document.
+
+		return
+	}
+
+	sketch.UI.getInputFromUser(
+		"Rename artboards with the following prefix",
+		{
+			initialValue: "Artboard"
+		},
+		(err, value) => {
+			if (err) {
+				// User cancelled
+
+				return
+			}
+
+			const page = document.selectedPage
+			if (page.layers.length > 0) {
+				rearrangeArtboardsInPage(page)
+				renameArtboardsInPage(page, value)
+			}
+
+			utils.toast('Artboards are in place!')
+		})
+}
+
+function rearrangeArtboardsInPage(page) {
+	utils.log(`Rearranging ${page.layers.length} artboards`)
 
 	// Create a copy of the array so we can work on it in Javascript
-	var layers = []
-	page.layers.forEach((l) => {
-		layers.push(l)
-	})
+	var layers = page.layers.map(l => l)
 
 	// Sort layers according to their x, y coordinates. Top left corner wins and
 	// then it goes into a Z pattern.
@@ -81,4 +106,15 @@ function rearrange(page) {
 
 		utils.log(`${layer.name} (${layer.frame.x}, ${layer.frame.y})`)
 	}
+}
+
+function renameArtboardsInPage(page, prefix) {
+	utils.log(`Renaming ${page.layers.length} artboards`)
+
+	// Create a copy of the array so we can work on it in Javascript
+	var count = 1
+	page.layers.map(l => l).reverse().forEach(l => {
+		var newName = `${prefix} ${count++}`
+		l.name = newName
+	})
 }

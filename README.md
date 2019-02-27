@@ -10,6 +10,12 @@ artboard at the top of the list and the bottom-right-most artboard at the end.
 
 Shortcut: `CTRL OPTION COMMAND S`
 
+# Sort and rename artboards
+
+Same as *Sort artboards* but you can rename artboards using a prefix.
+
+Shortcut: `CTRL OPTION COMMAND R`
+
 # Prepare page motion in Principle
 
 Going from Sketch to Principle requires a bit of preparation. For example, you

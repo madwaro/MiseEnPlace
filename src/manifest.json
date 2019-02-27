@@ -2,29 +2,28 @@
   "author": "Carlos Madrigal",
   "authorEmail": "madwaro@live.com",
   "description": "Prep first, cook later",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "homepage": "https://github.com/madwaro/MiseEnPlace",
   "compatibleVersion": 3,
   "bundleVersion": 1,
   "icon": "icon.png",
   "commands": [
     {
-      "name": "Prep layers in page",
-      "identifier": "miseenplace.prep-layers-in-page",
-      "shortcut": "ctrl alt cmd l",
+      "name": "Sort artboards",
+      "identifier": "miseenplace.sort-artboards",
+      "shortcut": "ctrl alt cmd s",
       "script": "./sort.js"
     },
     {
-      "name": "Prep for Principle",
+      "name": "Prepare page motion in Principle",
       "identifier": "miseenplace.prep-for-motion",
-      "shortcut": "ctrl alt cmd p",
       "script": "./motion.js"
     }
   ],
   "menu": {
     "title": "Mise En Place",
     "items": [
-      "miseenplace.prep-layers-in-page",
+      "miseenplace.sort-artboards",
       "miseenplace.prep-for-motion"
     ]
   }

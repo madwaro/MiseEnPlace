@@ -48,3 +48,11 @@ following ways:
   effect but these get imported into Principle. You'll see a 👁  when this
   happens.
 - Renames all layers to ensure unique names even for nested layers in symbols.
+
+# Support
+
+If you find this plugin helpful, or would like to support my plugins in general, buy me ☕️ via <a href="https://paypal.me/madwaro">PayPal</a>.
+
+# License
+
+Copyright (c) 2019 Carlos Madrigal (Madwaro). See LICENSE.md for further details.

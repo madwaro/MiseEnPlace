@@ -1,6 +1,7 @@
 {
   "name": "miseenplace",
   "version": "0.8.0",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git@github.com:madwaro/MiseEnPlace.git"

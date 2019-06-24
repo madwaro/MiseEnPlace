@@ -2,7 +2,7 @@
   "author": "Carlos Madrigal",
   "authorEmail": "madwaro@live.com",
   "description": "Helps you keep things tidied up before you start a new wave of changes.",
-  "version": "0.12.0",
+  "version": "0.13.0",
   "homepage": "https://github.com/madwaro/MiseEnPlace",
   "compatibleVersion": 3,
   "bundleVersion": 1,
@@ -12,15 +12,29 @@
       "name": "Sort artboards",
       "identifier": "miseenplace.sort-artboards",
       "shortcut": "ctrl alt cmd s",
-      "script": "./sort.js",
+      "script": "./sortArtboards.js",
       "handler": "sortArtboards"
     },
     {
       "name": "Sort and rename artboards",
       "identifier": "miseenplace.sort-rename-artboards",
       "shortcut": "ctrl alt cmd r",
-      "script": "./sort.js",
+      "script": "./sortArtboards.js",
       "handler": "sortRenameArtboards"
+    },
+    {
+      "name": "Sort layers",
+      "identifier": "miseenplace.sort-layers",
+      "shortcut": "shift ctrl alt cmd s",
+      "script": "./sortLayers.js",
+      "handler": "sortLayers"
+    },
+    {
+      "name": "Sort and rename layers",
+      "identifier": "miseenplace.sort-rename-layers",
+      "shortcut": "shift ctrl alt cmd r",
+      "script": "./sortLayers.js",
+      "handler": "sortRenameLayers"
     },
     {
       "name": "Prepare page motion in Principle",
@@ -33,6 +47,9 @@
     "items": [
       "miseenplace.sort-artboards",
       "miseenplace.sort-rename-artboards",
+      "-",
+      "miseenplace.sort-layers",
+      "miseenplace.sort-rename-layers",
       "-",
       "miseenplace.prep-for-motion"
     ]

@@ -16,6 +16,19 @@ Same as *Sort artboards* but you can rename artboards using a prefix.
 
 Shortcut: `CTRL OPTION COMMAND R`
 
+# Sort layers
+
+Same magic but for layers. Select some layers, make sure they are aligned to the top
+or to the right, and then run this command.
+
+Shortcut: `SHIFT CTRL OPTION COMMAND S`
+
+# Sort and rename Layers
+
+Same as *Sort layers* but you can rename layers using a prefix.
+
+Shortcut: `SHIFT CTRL OPTION COMMAND R`
+
 # Prepare page motion in Principle
 
 Going from Sketch to Principle requires a bit of preparation. For example, you

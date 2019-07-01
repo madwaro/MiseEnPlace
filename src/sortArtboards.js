@@ -53,7 +53,7 @@ function rearrangeArtboardsInPage(page) {
 	utils.log(`Rearranging ${page.layers.length} artboards`)
 
 	// Create a copy of the array so we can work on it in Javascript
-	var layers = getArtboardsInPage(page)
+	var layers = getLayersInPage(page)
 
 	// Sort layers according to their x, y coordinates. Top left corner wins and
 	// then it goes into a Z pattern.
@@ -113,12 +113,14 @@ function renameArtboardsInPage(page, prefix) {
 
 	// Create a copy of the array so we can work on it in Javascript
 	var count = 1
-	getArtboardsInPage(page).reverse().forEach(l => {
+	getLayersInPage(page, true).reverse().forEach(l => {
 		var newName = `${prefix} ${count++}`
 		l.name = newName
 	})
 }
 
-function getArtboardsInPage(page) {
-	return page.layers.filter(l => l instanceof sketch.Artboard).map(l => l)
+function getLayersInPage(page, onlyArtboards) {
+	return onlyArtboards ?
+		page.layers.filter(l => l instanceof sketch.Artboard).map(l => l) :
+		page.layers.map(l => l)
 }

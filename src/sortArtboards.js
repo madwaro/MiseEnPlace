@@ -109,13 +109,18 @@ function rearrangeArtboardsInPage(page) {
 }
 
 function renameArtboardsInPage(page, prefix) {
-	utils.log(`Renaming ${page.layers.length} artboards`)
+	const renameAllArtboards = page.selectedLayers.length <= 1
+	utils.log(`Renaming ${page.layers.length} artboards -- renaming all artboards: ${renameAllArtboards}`)
 
 	// Create a copy of the array so we can work on it in Javascript
 	var count = 1
 	getLayersInPage(page, true).reverse().forEach(l => {
-		var newName = `${prefix} ${count++}`
-		l.name = newName
+		const renameThisLayer = renameAllArtboards || l.selected
+
+		if (renameThisLayer) {
+			const newName = `${prefix} ${count++}`
+			l.name = newName
+		}
 	})
 }
 

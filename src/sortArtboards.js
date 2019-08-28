@@ -2,7 +2,20 @@ import sketch from 'sketch'
 import { utils } from './utils.js'
 
 export function onDocumentSaved(context) {
-	sortArtboards(context.actionContext)
+	const actionContext = context.actionContext
+	const selectedPage = actionContext.document.selectedPage
+
+	// Sort artboards on explicit user saves only
+	if (actionContext.autoSaved) {
+		return
+	}
+
+	if (selectedPage.name == 'Symbols') {
+		utils.log('Skipping Symbols page')
+		return
+	}
+
+	sortArtboards(actionContext)
 }
 
 export function sortArtboards(context) {

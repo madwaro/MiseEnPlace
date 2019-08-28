@@ -5,7 +5,7 @@ class Utils {
     // Uncomment the following line to enable logs.
   	// Open Console and filter entries using "Mise en place"
 
-  	//console.log(`Mise en place: ${text}`)
+  	console.log(`Mise en place: ${text}`)
   }
 
   debugLog(text) {

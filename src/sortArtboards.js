@@ -1,23 +1,6 @@
 import sketch from 'sketch'
 import { utils } from './utils.js'
 
-export function onDocumentSaved(context) {
-	const actionContext = context.actionContext
-	const selectedPage = actionContext.document.selectedPage
-
-	// Sort artboards on explicit user saves only
-	if (actionContext.autoSaved) {
-		return
-	}
-
-	if (selectedPage.name == 'Symbols') {
-		utils.log('Skipping Symbols page')
-		return
-	}
-
-	sortArtboards(actionContext)
-}
-
 export function sortArtboards(context) {
 	const document = sketch.fromNative(context.document)
 	if (!document) {
@@ -108,7 +91,7 @@ function rearrangeArtboardsInPage(page) {
 			result = 1
 		}
 
-		utils.log(`a[${a.name}]=(${aX}, ${aY}); b[${b.name}]=(${bX}, ${bY}); deltaX: ${deltaX}; deltaY: ${deltaY}; result=${result}`)
+		utils.verboseLog(`a[${a.name}]=(${aX}, ${aY}); b[${b.name}]=(${bX}, ${bY}); deltaX: ${deltaX}; deltaY: ${deltaY}; result=${result}`)
 
 		return result
 	})
@@ -121,7 +104,7 @@ function rearrangeArtboardsInPage(page) {
 
 		layer.moveToFront()
 
-		utils.log(`${layer.name} (${layer.frame.x}, ${layer.frame.y})`)
+		utils.verboseLog(`${layer.name} (${layer.frame.x}, ${layer.frame.y})`)
 	}
 }
 

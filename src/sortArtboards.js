@@ -1,6 +1,10 @@
 import sketch from 'sketch'
 import { utils } from './utils.js'
 
+export function onDocumentSaved(context) {
+	sortArtboards(context.actionContext)
+}
+
 export function sortArtboards(context) {
 	const document = sketch.fromNative(context.document)
 	if (!document) {

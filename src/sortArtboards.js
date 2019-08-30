@@ -50,7 +50,7 @@ export function sortRenameArtboards(context) {
 }
 
 function rearrangeArtboardsInPage(page) {
-	utils.log(`Rearranging ${page.layers.length} artboards`)
+	utils.log(`Rearranging ${page.layers.length} artboards in ${page.name}`)
 
 	// Create a copy of the array so we can work on it in Javascript
 	var layers = getLayersInPage(page)

@@ -2,7 +2,7 @@
   "author": "Carlos Madrigal",
   "authorEmail": "madwaro@live.com",
   "description": "Helps you keep things tidied up.",
-  "version": "0.23.0",
+  "version": "0.24.0",
   "homepage": "https://github.com/madwaro/MiseEnPlace",
   "compatibleVersion": 3,
   "bundleVersion": 1,
@@ -40,17 +40,6 @@
       "name": "Prepare page motion in Principle",
       "identifier": "miseenplace.prep-for-motion",
       "script": "./motion.js"
-    },
-    {
-      "name": "Action Listener",
-      "identifier": "miseenplace.action-listener",
-      "handlers": {
-        "actions": {
-          "ArtboardChanged.finish": "onArtboardChanged",
-          "LayersMoved.finish": "onLayersMoved"
-        }
-      },
-      "script": "./actionHandler.js"
     }
   ],
   "menu": {

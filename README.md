@@ -1,6 +1,14 @@
 Mise En Place is a Sketch plug-in that helps you prep before you start cooking
 your designs.
 
+# Re-title Layers
+
+Cleans up layer names removing path information, the word copy, and converting
+`PascalCase` into __Sentence case__.
+
+For example, a layer named `Misc/Button/SolidWithButton` gets renamed to
+`Solid with button`.
+
 # Sort artboards
 
 I got tired of arranging artboards in the layer list to match the order I saw in

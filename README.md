@@ -3,11 +3,10 @@ your designs.
 
 # Re-title Layers
 
-Cleans up layer names removing path information, the word copy, and converting
-`PascalCase` into __Sentence case__.
+Cleans up layer names removing path information, and the word copy.
 
 For example, a layer named `Misc/Button/SolidWithButton` gets renamed to
-`Solid with button`.
+`SolidWithButton`.
 
 # Sort artboards
 

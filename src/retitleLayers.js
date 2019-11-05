@@ -19,7 +19,6 @@ export function retitleLayers(context) {
   selection.forEach((layer) => {
     var name = dropPathFromName(layer.name)
     name = dropCopyFromName(name)
-    name = convertPascalCaseToSentenceCase(name)
     layer.name = name
 
     utils.verboseLog(`${name}`)
@@ -55,25 +54,4 @@ function dropCopyFromName(name) {
   }
 
   return newName
-}
-
-function convertPascalCaseToSentenceCase(name) {
-  const regex = /[0-9A-Z][^ 0-9A-Z]*/gm
-
-  var newName = []
-
-  var matches = null
-  while ((matches = regex.exec(name)) != null) {
-    if (matches.index === regex.lastIndex) {
-      regex.lastIndex++
-    }
-
-    if (newName.length == 0) {
-      newName.push(matches[0])
-    } else {
-      newName.push(matches[0].toLowerCase())
-    }
-  }
-
-  return newName.length == 0 ? name : newName.join(' ')
 }

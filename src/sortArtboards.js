@@ -27,10 +27,13 @@ export function sortRenameArtboards(context) {
 		return
 	}
 
+	const page = document.selectedPage
+	const candidateName = findCandidateName(page)
+
 	sketch.UI.getInputFromUser(
 		"Rename artboards with the following prefix",
 		{
-			initialValue: "Artboard"
+			initialValue: candidateName
 		},
 		(err, value) => {
 			if (err) {
@@ -39,7 +42,6 @@ export function sortRenameArtboards(context) {
 				return
 			}
 
-			const page = document.selectedPage
 			if (page.layers.length > 0) {
 				rearrangeArtboardsInPage(page)
 				renameArtboardsInPage(page, value)
@@ -106,6 +108,46 @@ function rearrangeArtboardsInPage(page) {
 
 		utils.verboseLog(`${layer.name} (${layer.frame.x}, ${layer.frame.y})`)
 	}
+}
+
+function findCandidateName(page) {
+	const processAllArtboards = page.selectedLayers.length <= 1
+	const regex = /(.*)( Copy)? \d+/gm
+	const names = {}
+
+	getLayersInPage(page, true).reverse().forEach(l => {
+		const processThisBoard = processAllArtboards || l.selected
+		if (!processThisBoard) {
+			return
+		}
+
+		var matches = null
+		while ((matches = regex.exec(l.name)) != null) {
+			if (matches.index === regex.lastIndex) {
+				regex.lastIndex++
+			}
+
+			const capturedName = new String(matches[1])
+			if (names[capturedName] == null) {
+				names[capturedName] = 0
+			} else {
+				names[capturedName] = names[capturedName] + 1
+			}
+		}
+	})
+
+	const stats = Object.keys(names).map(n => {
+		return { name: n, count: names[n] }
+	})
+
+	if (stats.length == 0) {
+		return "Artboard"
+	} else {
+		stats.sort((a, b) => b.count - a.count)
+	}
+
+	return stats[0].name
+
 }
 
 function renameArtboardsInPage(page, prefix) {

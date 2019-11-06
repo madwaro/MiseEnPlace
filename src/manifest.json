@@ -2,18 +2,25 @@
   "author": "Carlos Madrigal",
   "authorEmail": "madwaro@live.com",
   "description": "Helps you keep things tidied up.",
-  "version": "0.26.0",
+  "version": "0.27.0",
   "homepage": "https://github.com/madwaro/MiseEnPlace",
   "compatibleVersion": 3,
   "bundleVersion": 1,
   "icon": "icon.png",
   "commands": [
     {
-      "name": "Re-title layers",
-      "identifier": "miseenplace.retitle-layers",
+      "name": "Keep first name in path",
+      "identifier": "miseenplace.retitle-layers-first",
       "shortcut": "ctrl alt cmd t",
       "script": "./retitleLayers.js",
-      "handler": "retitleLayers"
+      "handler": "retitleLayersFirst"
+    },
+    {
+      "name": "Keep last name in path",
+      "identifier": "miseenplace.retitle-layers-last",
+      "shortcut": "ctrl alt cmd shift t",
+      "script": "./retitleLayers.js",
+      "handler": "retitleLayersLast"
     },
     {
       "name": "Sort artboards",
@@ -52,7 +59,8 @@
   "menu": {
     "title": "Mise En Place",
     "items": [
-      "miseenplace.retitle-layers",
+      "miseenplace.retitle-layers-first",
+      "miseenplace.retitle-layers-last",
       "-",
       "miseenplace.sort-artboards",
       "miseenplace.sort-rename-artboards",

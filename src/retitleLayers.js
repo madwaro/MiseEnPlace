@@ -1,7 +1,15 @@
 import sketch from 'sketch'
 import { utils } from './utils.js'
 
-export function retitleLayers(context) {
+export function retitleLayersFirst(context) {
+  retitleLayers(context, true)
+}
+
+export function retitleLayersLast(context) {
+  retitleLayers(context, false)
+}
+
+function retitleLayers(context, keepFirst) {
   const document = sketch.fromNative(context.document)
 	if (!document) {
 		// During developing, every time I save the script executes with a null
@@ -17,7 +25,7 @@ export function retitleLayers(context) {
   }
 
   selection.forEach((layer) => {
-    var name = dropPathFromName(layer.name)
+    var name = dropPathFromName(layer.name, keepFirst)
     name = dropCopyFromName(name)
     layer.name = name
 
@@ -27,8 +35,8 @@ export function retitleLayers(context) {
   utils.toast('Look at those layer titles!')
 }
 
-function dropPathFromName(name) {
-  const regex = /.*\/(.*)$/gm
+function dropPathFromName(name, keepFirst) {
+  const regex = keepFirst ? /([^\/]+)\// : /.*\/(.*)$/gm
 
   let matches = regex.exec(name)
   var newName = name

@@ -8,6 +8,8 @@ Cleans up layer names removing path information, and the word copy.
 For example, a layer named `Misc/Button/SolidWithButton` gets renamed to
 `SolidWithButton`.
 
+You can keep the first or last name in a path.
+
 # Sort artboards
 
 I got tired of arranging artboards in the layer list to match the order I saw in

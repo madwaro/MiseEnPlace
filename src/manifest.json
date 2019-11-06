@@ -2,7 +2,7 @@
   "author": "Carlos Madrigal",
   "authorEmail": "madwaro@live.com",
   "description": "Helps you keep things tidied up.",
-  "version": "0.27.0",
+  "version": "0.28.0",
   "homepage": "https://github.com/madwaro/MiseEnPlace",
   "compatibleVersion": 3,
   "bundleVersion": 1,
@@ -11,14 +11,14 @@
     {
       "name": "Keep first name in path",
       "identifier": "miseenplace.retitle-layers-first",
-      "shortcut": "ctrl alt cmd t",
+      "shortcut": "ctrl alt cmd shift t",
       "script": "./retitleLayers.js",
       "handler": "retitleLayersFirst"
     },
     {
       "name": "Keep last name in path",
       "identifier": "miseenplace.retitle-layers-last",
-      "shortcut": "ctrl alt cmd shift t",
+      "shortcut": "ctrl alt cmd t",
       "script": "./retitleLayers.js",
       "handler": "retitleLayersLast"
     },

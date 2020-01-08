@@ -1,15 +1,25 @@
 import sketch from 'sketch'
 import { utils } from './utils.js'
 
+let strategies = {
+  KEEP_FIRST_COMPONENT: 'keep_first_component',
+  KEEP_LAST_COMPONENT: 'keep_last_component',
+  REMOVE_EXTRA_WHITESPACE: 'remove_extra_whitespace'
+}
+
 export function retitleLayersFirst(context) {
-  retitleLayers(context, true)
+  retitleLayers(context, strategies.KEEP_FIRST_COMPONENT)
 }
 
 export function retitleLayersLast(context) {
-  retitleLayers(context, false)
+  retitleLayers(context, strategies.KEEP_LAST_COMPONENT)
 }
 
-function retitleLayers(context, keepFirst) {
+export function removeExtraSpacesFromPathName(context) {
+  retitleLayers(context, strategies.REMOVE_EXTRA_WHITESPACE)
+}
+
+function retitleLayers(context, strategy) {
   const document = sketch.fromNative(context.document)
 	if (!document) {
 		// During developing, every time I save the script executes with a null
@@ -25,9 +35,16 @@ function retitleLayers(context, keepFirst) {
   }
 
   selection.forEach((layer) => {
-    var name = dropPathFromName(layer.name, keepFirst)
-    name = dropCopyFromName(name)
-    layer.name = name
+    var name = layer.name
+
+    if (strategy == strategies.KEEP_FIRST_COMPONENT || strategy == strategies.KEEP_LAST_COMPONENT) {
+      name = dropPathFromName(layer.name, strategy)
+      name = dropCopyFromName(name)
+    } else if (strategy == strategies.REMOVE_EXTRA_WHITESPACE) {
+      name = removeExtraWhiteSpaces(name)
+    }
+
+    layer.name = name.trim()
 
     utils.verboseLog(`${name}`)
   })
@@ -35,8 +52,8 @@ function retitleLayers(context, keepFirst) {
   utils.toast('Look at those layer titles!')
 }
 
-function dropPathFromName(name, keepFirst) {
-  const regex = keepFirst ? /([^\/]+)\// : /.*\/(.*)$/gm
+function dropPathFromName(name, strategy) {
+  const regex = strategy == strategies.KEEP_FIRST_COMPONENT ? /([^\/]+)\// : /.*\/(.*)$/gm
 
   let matches = regex.exec(name)
   var newName = name
@@ -62,4 +79,8 @@ function dropCopyFromName(name) {
   }
 
   return newName
+}
+
+function removeExtraWhiteSpaces(pathName) {
+  return pathName.split('/').map(c => c.trim()).join('/')
 }

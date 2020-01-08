@@ -23,6 +23,13 @@
       "handler": "retitleLayersLast"
     },
     {
+      "name": "Remove extra white space from path name",
+      "identifier": "miseenplace.remove-whitespace-from-pathname",
+      "shortcut": "ctrl alt cmd w",
+      "script": "./retitleLayers.js",
+      "handler": "removeExtraSpacesFromPathName"
+    },
+    {
       "name": "Sort artboards",
       "identifier": "miseenplace.sort-artboards",
       "shortcut": "ctrl alt cmd s",
@@ -61,6 +68,7 @@
     "items": [
       "miseenplace.retitle-layers-first",
       "miseenplace.retitle-layers-last",
+      "miseenplace.remove-whitespace-from-pathname",
       "-",
       "miseenplace.sort-artboards",
       "miseenplace.sort-rename-artboards",

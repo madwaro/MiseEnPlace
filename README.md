@@ -10,6 +10,9 @@ For example, a layer named `Misc/Button/SolidWithButton` gets renamed to
 
 You can keep the first or last name in a path.
 
+You can also remove extra whitespace from path names looking like `Bar / Compact / Light`,
+and have something clean like `Bar/Compact/Light`.
+
 # Sort artboards
 
 I got tired of arranging artboards in the layer list to match the order I saw in
